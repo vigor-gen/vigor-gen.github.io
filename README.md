@@ -8,11 +8,11 @@ This is the repository that contains source code for the [VIGOR project page](ht
 
 If you find VIGOR useful for your work please cite:
 ```
-@inproceedings{park2026vigor,
-  author    = {Park, Mingyu and Noh, Samyeul and Myung, Hyun and Lee, Donghwan},
-  title     = {{VIGOR}: Zero-Shot Visual Generalization via Latent-Space Consistency in Model-Based Reinforcement Learning},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year      = {2026},
+@article{park2026vigor,
+  title={VIGOR: Zero-Shot Visual Generalization via Latent-Space Consistency in Model-Based Reinforcement Learning},
+  author={Park, Mingyu and Noh, Samyeul and Myung, Hyun and Lee, Donghwan},
+  journal={arXiv preprint arXiv:2610.02801},
+  year={2026}
 }
 ```
 
