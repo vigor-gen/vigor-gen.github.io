@@ -256,33 +256,33 @@
           <p>
             Model-based reinforcement learning (MBRL) achieves strong sample efficiency by planning
             within learned latent dynamics, yet its performance degrades substantially under unseen
-            visual distractions such as background variations, lighting changes, color shifts, or
-            camera translations. Unlike model-free RL, where encoder perturbations affect only
-            single-step predictions, MBRL suffers from a two-level vulnerability: visual distractions
-            first push encoder outputs out of distribution, and these errors then compound through
-            recursive latent rollouts over the planning horizon. We propose VIsual Generalization via
-            latent-space cOnsistency in model-based RL (VIGOR), a framework that enables zero-shot
-            generalization to unseen appearance-based distractions while retaining the sample
-            efficiency of its MBRL backbone.
+            visual distractions such as background variations, lighting changes, or camera shifts.
+            Unlike model-free RL, where encoder perturbations affect only single-step predictions,
+            MBRL suffers from a two-level vulnerability: visual distractions first push encoder outputs
+            out of distribution, and these errors then compound through recursive
+            latent rollouts over the planning horizon.
           </p>
           <p>
-            VIGOR enforces latent-space consistency at both levels through three interdependent
-            components: (i) asymmetric weak-to-strong augmentation, which pairs weak-only and
-            weak-to-strong latent views within a single batch; (ii) dynamics-level consistency, which
-            enforces augmentation-invariant transition predictions through direct latent regression;
-            and (iii) encoder-level stabilization, which prevents encoder drift under the
-            cross-augmentation supervision imposed by dynamics-level consistency.
+            We propose <b>VI</b>sual <b>G</b>eneralization via latent-space c<b>O</b>nsistency in model-based <b>R</b>L (<b>VIGOR</b>),
+            a framework that enables zero-shot generalization to unseen visual distractions while retaining the sample efficiency
+            of its MBRL backbone. VIGOR enforces latent-space consistency through three interdependent components:
+            (i) <i>asymmetric weak-to-strong augmentation</i>, which pairs weak-only and weak-to-strong latent views within a single batch;
+            (ii) <i>dynamics-level consistency</i>, which enforces augmentation-invariant transition predictions through direct latent regression;
+            and (iii)<i>encoder-level stabilization</i>, which prevents encoder drift under the cross-augmentation supervision
+            imposed by dynamics-level consistency.
           </p>
           <p>
-            On the DeepMind Control Suite (DMC) and Robosuite, VIGOR consistently improves zero-shot
-            generalization when instantiated with either TD-MPC2 or DreamerV3, outperforming
-            state-of-the-art model-free and model-based baselines. In mean return, it improves TD-MPC2
-            by 29.8% on DMC and more than threefold on Robosuite, and DreamerV3 by 20.9% and 52.6%,
-            respectively. These results demonstrate that VIGOR transfers across decoder-free and
-            decoder-based world models. Ablations further show that VIGOR's robustness is
-            augmentation-agnostic within appearance-based perturbation families (contextual, textural,
-            and spectral), confirming that latent-space consistency, not the augmentation choice,
-            drives robustness.
+            Evaluations on the DeepMind Control Suite (DMC) and Robosuite show that VIGOR, instantiated on TD-MPC2,
+            outperforms state-of-the-art model-free and model-based baselines in zero-shot generalization,
+            surpassing the second-best baseline by <b>3.4%</b> on DMC and <b>43.6%</b> on Robosuite.
+            Moreover, VIGOR achieves these improvements while maintaining sample efficiency comparable to
+            that of its backbone and requiring fewer environment interactions than the other evaluated baselines.
+            Ablations further show that VIGOR's robustness is augmentation-agnostic: replacing the default augmentation
+            with alternatives from distinct perturbation families preserves strong generalization,
+            confirming that latent-space consistency, not the augmentation choice, drives robustness.
+            Finally, a second instantiation of VIGOR on DreamerV3, a structurally distinct recurrent state-space world model,
+            also improves zero-shot generalization over the DreamerV3 baseline on both benchmarks,
+            suggesting that the benefits of VIGOR are not limited to the TD-MPC2 backbone.
           </p>
         </div>
       </div>
