@@ -639,51 +639,6 @@
           in column.
         </p>
 
-        <!-- Rollout comparison. -->
-        <h3 class="title is-4">Side-by-Side Rollouts</h3>
-        <h4 class="title is-5">walker-walk, background-video (hard)</h4>
-        <div class="columns is-mobile is-multiline is-variable is-2">
-          <div class="column is-3-tablet is-6-mobile">
-            <video autoplay muted loop playsinline width="100%">
-              <source src="./static/videos/vigor/walker-walk_background-video-hard_tdmpc2.mp4"
-                      type="video/mp4">
-            </video>
-            <p class="video-label">TD-MPC2</p>
-          </div>
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V2</span>Dr. G rollout</div>
-            <p class="video-label">Dr. G</p>
-          </div>
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V3</span>SRM rollout</div>
-            <p class="video-label">SRM</p>
-          </div>
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V1</span>VIGOR rollout</div>
-            <p class="video-label">VIGOR (Ours)</p>
-          </div>
-        </div>
-        <h4 class="title is-5">door-opening, eval-extreme</h4>
-        <div class="columns is-mobile is-multiline is-variable is-2">
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V4</span>TD-MPC2 rollout</div>
-            <p class="video-label">TD-MPC2</p>
-          </div>
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V5</span>Dr. G rollout</div>
-            <p class="video-label">Dr. G</p>
-          </div>
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V6</span>SRM rollout</div>
-            <p class="video-label">SRM</p>
-          </div>
-          <div class="column is-3-tablet is-6-mobile">
-            <div class="placeholder-media"><span class="placeholder-id">V7</span>VIGOR rollout</div>
-            <p class="video-label">VIGOR (Ours)</p>
-          </div>
-        </div>
-        <br/>
-
         <!-- Sample efficiency. -->
         <h3 class="title is-4">Sample Efficiency</h3>
         <div class="content has-text-justified">
@@ -695,13 +650,98 @@
           </p>
         </div>
         <figure class="figure-block">
-          <img src="./static/images/vigor/fig04.png" loading="lazy"
+          <img src="./static/images/vigor/Sample Efficiency.jpg" loading="lazy"
                alt="Learning curves on DMC and Robosuite."/>
           <figcaption>
             IQM normalized scores on DMC and Robosuite. Shaded regions: 95% stratified bootstrap
             confidence intervals.
           </figcaption>
         </figure>
+
+        <!-- Rollout comparison. -->
+        <h3 class="title is-4">Side-by-Side Rollouts</h3>
+        <h4 class="title is-5">walker-walk, light-color (hard)</h4>
+        <div class="columns is-mobile is-multiline is-variable is-2">
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/TD-MPC2_walker-walk_light_color_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-failure">TD-MPC2</p>
+        </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/DreamerV3_walker-walk_light_color_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-failure">DreamerV3</p>
+        </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/DrG_walker-walk_light_color_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-success">Dr. G</p>
+            </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/DreamerV3+VIGOR_walker-walk_light_color_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-success">DreamerV3+VIGOR(Ours)</p>
+          </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/TD-MPC2+VIGOR_walker-walk_light_color_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-success">TD-MPC2+VIGOR(Ours)</p>
+            </div>
+          </div>
+        <h4 class="title is-5">door-opening, eval-extreme</h4>
+        <div class="columns is-mobile is-multiline is-variable is-2">
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/TD-MPC2_Door_eval-extreme.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-failure">TD-MPC2</p>
+        </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/DreamerV3_Door_eval-extreme.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-failure">DreamerV3</p>
+          </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/DrG_Door_eval-extreme.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-failure">Dr. G</p>
+          </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/DreamerV3+VIGOR_Door_eval-extreme.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-moderate">DreamerV3+VIGOR(Ours)</p>
+          </div>
+          <div class="column is-one-fifth-tablet is-6-mobile">
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/sidebyside/TD-MPC2+VIGOR_Door_eval-extreme.mp4"
+                      type="video/mp4">
+            </video>
+            <p class="video-label is-success">TD-MPC2+VIGOR(Ours)</p>
+          </div>
+        </div>
+        <p class="rollout-legend">
+          <span class="rollout-legend-item"><span class="rollout-swatch is-success"></span>Success</span>
+          <span class="rollout-legend-item"><span class="rollout-swatch is-moderate"></span>Moderate</span>
+          <span class="rollout-legend-item"><span class="rollout-swatch is-failure"></span>Failure</span>
+        </p>
+        <br/>
 
         <!-- Latent-space consistency. -->
         <h3 class="title is-4">Latent-Space Consistency</h3>
@@ -713,71 +753,12 @@
             Dr. G produce scattered initial encodings or divergent rollouts, with degraded returns.
           </p>
         </div>
-        <figure class="figure-block">
-          <img src="./static/images/vigor/fig08.png" loading="lazy"
-               alt="UMAP projections of latent rollouts and return curves for Dr. G, TD-MPC2, and VIGOR, with environment snapshots."/>
-          <figcaption>
-            walker-walk under background-color distractions. Left: UMAP projections of latent rollouts
-            (top) and episode returns (bottom). Right: environment snapshots across settings.
-          </figcaption>
-        </figure>
-
-        <!-- Ablations. -->
-        <h3 class="title is-4">Why All Three Components?</h3>
-        <div class="content has-text-justified">
-          <p>
-            <b>Each component fails differently when removed.</b> Without DC, performance on Robosuite
-            falls to 46%: encoder-level alignment alone cannot stop the dynamics model from amplifying
-            residual discrepancies. Among augmentation strategies, only AW performs well on both
-            benchmarks, because the asymmetric split provides both optimization stability and
-            perturbation diversity.
-          </p>
-        </div>
-        <div class="columns">
-          <div class="column">
-            <div class="table-container">
-              <table class="table is-fullwidth vigor-table has-text-centered-cells">
-                <thead>
-                  <tr><th>Augmentation</th><th>DMC</th><th>Robosuite</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Weak-only</td><td>83%</td><td>47%</td></tr>
-                  <tr><td>Strong-only</td><td>48%</td><td>62%</td></tr>
-                  <tr><td>Weak-to-strong-only</td><td>62%</td><td>79%</td></tr>
-                  <tr class="is-ours"><td><b>AW (VIGOR)</b></td><td><b>100%</b></td><td><b>100%</b></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="column">
-            <div class="table-container">
-              <table class="table is-fullwidth vigor-table has-text-centered-cells">
-                <thead>
-                  <tr><th>Losses</th><th>DMC</th><th>Robosuite</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>w/o DC &amp; ES</td><td>76%</td><td>33%</td></tr>
-                  <tr><td>w/o DC</td><td>89%</td><td>46%</td></tr>
-                  <tr><td>w/o ES</td><td>93%</td><td>88%</td></tr>
-                  <tr class="is-ours"><td><b>VIGOR</b></td><td><b>100%</b></td><td><b>100%</b></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <p class="figure-caption">
-          Zero-shot performance relative to full VIGOR.
-        </p>
-
-        <!-- Limitations. -->
-        <h3 class="title is-4">Limitations</h3>
-        <div class="content has-text-justified">
-          <p>
-            VIGOR targets appearance-based perturbations. Geometric viewpoint changes, dynamics shift,
-            and task-level shift are outside its scope: under unseen camera rotations, all evaluated
-            methods, including VIGOR, degrade sharply. Our backbone-generality evidence is limited to
-            two world-model families, and validation on real robots remains future work.
-          </p>
+        <div class="content has-text-centered">
+          <video controls muted playsinline preload="metadata" width="100%"
+                 poster="./static/images/vigor/poster_motivation.jpg">
+            <source src="./static/videos/vigor/motivation.mp4"
+                    type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
