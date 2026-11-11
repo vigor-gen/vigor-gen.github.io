@@ -20,6 +20,67 @@ function setInterpolationImage(i) {
 }
 
 
+// Keep all videos in a grid on one clock. With independent `loop`s, every restart
+// adds a slightly different seek delay, so the clips drift apart over time.
+// The longest video is the master; each other video follows
+// (master time mod its own duration), so shorter clips repeat in step.
+var SYNC_SEEK_THRESHOLD = 0.3;  // seconds; larger drift is fixed with a seek
+var SYNC_MAX_RATE_NUDGE = 0.1;  // smaller drift is absorbed by +/-10% playback rate
+
+function waitUntilPlayable(video) {
+  return new Promise(function(resolve) {
+    if (video.readyState >= 3) return resolve(true);
+    video.addEventListener('canplay', function() { resolve(true); }, { once: true });
+    var sources = video.querySelectorAll('source');
+    if (sources.length) {
+      // A missing file fires `error` on its <source>, not on the <video>.
+      sources[sources.length - 1].addEventListener('error', function() { resolve(false); }, { once: true });
+    }
+    setTimeout(function() { resolve(video.readyState >= 1); }, 8000);
+  });
+}
+
+function syncVideoGrid(grid) {
+  var all = Array.prototype.slice.call(grid.querySelectorAll('video'));
+  if (all.length < 2) return;
+
+  Promise.all(all.map(waitUntilPlayable)).then(function(ok) {
+    var videos = all.filter(function(v, i) { return ok[i] && v.duration > 0; });
+    if (videos.length < 2) return;
+
+    var master = videos.reduce(function(a, b) { return b.duration > a.duration ? b : a; });
+    videos.forEach(function(v) {
+      v.loop = (v === master);
+      v.pause();
+      v.currentTime = 0;
+    });
+    videos.forEach(function(v) { v.play().catch(function() {}); });
+
+    function follow() {
+      var t = master.currentTime;
+      videos.forEach(function(v) {
+        if (v === master) return;
+        var d = v.duration;
+        var diff = (t % d) - v.currentTime;
+        // Measure the shorter way around the loop point.
+        if (diff > d / 2) diff -= d;
+        if (diff < -d / 2) diff += d;
+
+        if (Math.abs(diff) > SYNC_SEEK_THRESHOLD || v.ended) {
+          v.currentTime = t % d;
+          v.playbackRate = 1;
+        } else {
+          v.playbackRate = 1 + Math.max(-SYNC_MAX_RATE_NUDGE, Math.min(SYNC_MAX_RATE_NUDGE, diff));
+        }
+        if (v.paused && !master.paused) v.play().catch(function() {});
+      });
+      requestAnimationFrame(follow);
+    }
+    requestAnimationFrame(follow);
+  });
+}
+
+
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
@@ -76,5 +137,7 @@ $(document).ready(function() {
     }
 
     bulmaSlider.attach();
+
+    document.querySelectorAll('.teaser-grid').forEach(syncVideoGrid);
 
 })
