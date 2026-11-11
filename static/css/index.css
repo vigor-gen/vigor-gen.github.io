@@ -230,6 +230,79 @@ body {
   border-radius: 4px;
 }
 
+/* Copy of the row label used only by the mobile layout (before the Robosuite videos) */
+.teaser-row-label.is-repeat {
+  display: none;
+}
+
+/* Phones: six columns are too narrow, so stack the benchmarks.
+   Rows dissolve (display: contents) and each cell is placed explicitly:
+   rows 1-6 hold DMC, rows 7-12 hold Robosuite, three video columns each.
+   Grid children: 2-3 = benchmark titles, 5-10 = column labels, 11-14 = rows.
+   Row children: 1 = label, 2-4 = DMC videos, 5 = repeated label, 6-8 = Robosuite videos. */
+@media screen and (max-width: 768px) {
+  .teaser-grid {
+    grid-template-columns: auto repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+  .teaser-grid > div:empty {
+    display: none;  /* corner spacers and the column divider */
+  }
+  .teaser-row {
+    display: contents;
+  }
+
+  .teaser-benchmark {
+    grid-column: 2 / -1;
+    font-size: 1.1rem;
+  }
+  .teaser-benchmark:nth-child(2) { grid-row: 1; }
+  .teaser-benchmark:nth-child(3) { grid-row: 7; margin-top: 1.5rem; }
+
+  .teaser-grid > .video-label {
+    font-size: 0.85rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+  .teaser-grid > .video-label:nth-child(-n+7)  { grid-row: 2; }
+  .teaser-grid > .video-label:nth-child(n+8)   { grid-row: 8; }
+  .teaser-grid > .video-label:nth-child(5),
+  .teaser-grid > .video-label:nth-child(8)     { grid-column: 2; }
+  .teaser-grid > .video-label:nth-child(6),
+  .teaser-grid > .video-label:nth-child(9)     { grid-column: 3; }
+  .teaser-grid > .video-label:nth-child(7),
+  .teaser-grid > .video-label:nth-child(10)    { grid-column: 4; }
+
+  .teaser-row > :nth-child(4n+1) { grid-column: 1; }
+  .teaser-row > :nth-child(4n+2) { grid-column: 2; }
+  .teaser-row > :nth-child(4n+3) { grid-column: 3; }
+  .teaser-row > :nth-child(4n+4) { grid-column: 4; }
+  .teaser-row:nth-child(11) > :nth-child(-n+4) { grid-row: 3; }
+  .teaser-row:nth-child(12) > :nth-child(-n+4) { grid-row: 4; }
+  .teaser-row:nth-child(13) > :nth-child(-n+4) { grid-row: 5; }
+  .teaser-row:nth-child(14) > :nth-child(-n+4) { grid-row: 6; }
+  .teaser-row:nth-child(11) > :nth-child(n+5)  { grid-row: 9; }
+  .teaser-row:nth-child(12) > :nth-child(n+5)  { grid-row: 10; }
+  .teaser-row:nth-child(13) > :nth-child(n+5)  { grid-row: 11; }
+  .teaser-row:nth-child(14) > :nth-child(n+5)  { grid-row: 12; }
+
+  .teaser-row-label {
+    font-size: 0.8rem;
+  }
+  .teaser-row-label.is-repeat {
+    display: block;
+  }
+  .teaser-grid video {
+    padding: 4px;
+    border-radius: 8px;
+  }
+  .teaser-legend {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-left: 0;
+  }
+}
+
 /* VIGOR icon above the paper title */
 .publication-icon {
   display: inline-block;
