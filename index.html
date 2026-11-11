@@ -69,7 +69,6 @@
       </a>
       <a class="navbar-item" href="#problem">Problem</a>
       <a class="navbar-item" href="#motivation">Motivation</a>
-      <a class="navbar-item" href="#method">Method</a>
       <a class="navbar-item" href="#results">Results</a>
       <a class="navbar-item" href="#BibTeX">BibTeX</a>
     </div>
@@ -83,6 +82,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
+          <img class="publication-icon" src="./static/images/vigor_icon.svg" alt="VIGOR logo">
           <h1 class="title is-3 publication-title">VIGOR: Zero-Shot Visual Generalization via Latent-Space Consistency in Model-Based Reinforcement Learning</h1>
           <div class="is-size-4 block">
             <span><a class="publication-venue" href="https://neurips.cc/virtual/2026/poster/153294">NeurIPS 2026</a></span>
@@ -114,7 +114,7 @@
             <div class="publication-links">
               <!-- PDF Link. TODO(A1): add href once the camera-ready PDF is hosted, then remove `disabled`. -->
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+                <a class="button is-normal is-rounded is-dark" disabled title="Coming soon">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
@@ -124,7 +124,7 @@
               <!-- arXiv Link. -->
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2610.02801"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
@@ -134,7 +134,7 @@
               <!-- Video Link. -->
               <span class="link-block">
                 <a href="./static/videos/VIGOR_summary_video.mp4"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-video"></i>
                   </span>
@@ -144,7 +144,7 @@
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/vigor-gen/tdmpc2_vigor.git"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
@@ -154,7 +154,7 @@
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/vigor-gen/dreamerv3_vigor.git"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
@@ -163,7 +163,7 @@
               </span>
               <!-- Poster Link. TODO(A4): add href once the poster PDF is hosted, then remove `disabled`. -->
               <span class="link-block">
-                <a class="external-link button is-normal is-rounded is-dark" disabled title="Coming soon">
+                <a class="button is-normal is-rounded is-dark" disabled title="Coming soon">
                   <span class="icon">
                       <i class="fas fa-image"></i>
                   </span>
@@ -173,7 +173,7 @@
               <!-- BibTeX Link. -->
               <span class="link-block">
                 <a href="#BibTeX"
-                   class="external-link button is-normal is-rounded is-dark">
+                   class="button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-quote-right"></i>
                   </span>
@@ -193,24 +193,141 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="columns is-centered is-mobile is-variable is-2">
-        <div class="column is-5">
-          <video autoplay muted loop playsinline width="100%">
-            <source src="./static/videos/vigor/walker-walk_background-video-hard_tdmpc2.mp4"
+      <div class="teaser-grid">
+        <div></div>
+        <p class="teaser-benchmark">DMC · walker-stand</p>
+        <p class="teaser-benchmark">Robosuite · peg-in-hole</p>
+
+        <div></div>
+        <p class="video-label">Clean</p>
+        <p class="video-label">Background<br>Video Easy</p>
+        <p class="video-label">Background<br>Video Hard</p>
+        <p class="video-label">Clean</p>
+        <p class="video-label">Eval Easy</p>
+        <p class="video-label">Eval Extreme</p>
+
+        <div class="teaser-row">
+          <p class="teaser-row-label is-dreamerv3">DreamerV3</p>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3_walker-stand_original.mp4"
                     type="video/mp4">
           </video>
-          <p class="video-label">TD-MPC2</p>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3_walker-stand_background_video_easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3_walker-stand_background_video_hard.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3_TwoArmPegInHole_train.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3_TwoArmPegInHole_eval-easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3_TwoArmPegInHole_eval-extreme.mp4"
+                    type="video/mp4">
+          </video>
         </div>
-        <div class="column is-5">
-          <div class="placeholder-media">
-            <span class="placeholder-id">V1</span>
-            VIGOR rollout: walker-walk, background-video (hard)
+
+        <div class="teaser-row">
+          <p class="teaser-row-label is-tdmpc2">TD-MPC2</p>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2_walker-stand_original.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2_walker-stand_background_video_easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2_walker-stand_background_video_hard.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2_TwoArmPegInHole_train.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2_TwoArmPegInHole_eval-easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-failure" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2_TwoArmPegInHole_eval-extreme.mp4"
+                    type="video/mp4">
+          </video>
           </div>
-          <p class="video-label">VIGOR (Ours)</p>
+
+        <div class="teaser-row">
+          <p class="teaser-row-label is-dreamerv3 is-ours">DreamerV3+VIGOR<br>(Ours)</p>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3+VIGOR_walker-stand_original.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3+VIGOR_walker-stand_background_video_easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-moderate" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3+VIGOR_walker-stand_background_video_hard.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-moderate" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3+VIGOR_TwoArmPegInHole_train.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3+VIGOR_TwoArmPegInHole_eval-easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/DreamerV3+VIGOR_TwoArmPegInHole_eval-extreme.mp4"
+                    type="video/mp4">
+          </video>
         </div>
+
+        <div class="teaser-row">
+          <p class="teaser-row-label is-tdmpc2 is-ours">TD-MPC2+VIGOR<br>(Ours)</p>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2+VIGOR_walker-stand_original.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2+VIGOR_walker-stand_background_video_easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-moderate" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2+VIGOR_walker-stand_background_video_hard.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2+VIGOR_TwoArmPegInHole_train.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2+VIGOR_TwoArmPegInHole_eval-easy.mp4"
+                    type="video/mp4">
+          </video>
+          <video class="is-success" autoplay muted loop playsinline width="100%">
+            <source src="./static/videos/teaser/TD-MPC2+VIGOR_TwoArmPegInHole_eval-extreme.mp4"
+                    type="video/mp4">
+          </video>
       </div>
+
+        <!-- Separates the DMC and Robosuite columns -->
+        <div class="teaser-divider" aria-hidden="true"></div>
+      </div>
+      <p class="teaser-legend">
+        <span class="teaser-legend-item"><span class="teaser-swatch is-success"></span>Success</span>
+        <span class="teaser-legend-item"><span class="teaser-swatch is-moderate"></span>Moderate</span>
+        <span class="teaser-legend-item"><span class="teaser-swatch is-failure"></span>Failure</span>
+      </p>
       <h2 class="subtitle has-text-centered">
-        Trained on clean pixels, tested on distractions it has never seen, with no test-time adaptation.
+        Trained on <strong>clean</strong> pixels, tested on <strong>distractions it has never seen</strong>, with <strong>no test-time adaptation</strong>.
       </h2>
     </div>
   </div>
@@ -223,26 +340,35 @@
     <!-- Key Contributions. -->
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Key Contributions</h2>
-        <div class="content">
-          <ul>
-            <li>
-              <b>A two-level failure mode.</b> Visual distractions first push encoder outputs out of
-              distribution, and those errors then compound through recursive latent rollouts. This
-              does not arise in single-step model-free RL.
+        <h2 class="title is-3 has-text-centered contributions-heading">Key Contributions</h2>
+        <ol class="contributions">
+          <li>
+            <span class="contribution-kicker">Insight</span>
+            <h3 class="contribution-title">A two-level failure mode</h3>
+            <p>
+              Visual distractions first push encoder outputs out of distribution, and those errors
+              then compound through recursive latent rollouts. This does not arise in single-step
+              model-free RL.
+            </p>
             </li>
             <li>
-              <b>An integrated framework for MBRL robustness.</b> Three interdependent components
-              (AW, DC, and ES) enforce latent-space consistency at both levels, without modifying
-              the planner or optimizer.
+            <span class="contribution-kicker">Method</span>
+            <h3 class="contribution-title">An integrated framework for MBRL robustness</h3>
+            <p>
+              Three interdependent components (AW, DC, and ES) enforce latent-space consistency at
+              both levels, without modifying the planner or optimizer.
+            </p>
             </li>
             <li>
-              <b>State-of-the-art zero-shot generalization across backbones.</b> In mean return,
-              VIGOR improves TD-MPC2 by 29.8% on DMC and more than threefold on Robosuite, and
-              DreamerV3 by 20.9% and 52.6%, while preserving each backbone's sample efficiency.
+            <span class="contribution-kicker">Results</span>
+            <h3 class="contribution-title">State-of-the-art zero-shot generalization across backbones</h3>
+            <p>
+              In mean return, VIGOR improves TD-MPC2 by <strong>29.8%</strong> on DMC and
+              <strong>more than threefold</strong> on Robosuite, and DreamerV3 by <strong>20.9%</strong>
+              and <strong>52.6%</strong>, while preserving each backbone's sample efficiency.
+            </p>
             </li>
-          </ul>
-        </div>
+        </ol>
       </div>
     </div>
     <!--/ Key Contributions. -->
