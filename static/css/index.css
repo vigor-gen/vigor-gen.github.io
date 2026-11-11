@@ -1,22 +1,113 @@
-body {
-  font-family: 'Noto Sans', sans-serif;
+/* Site theme: the green palette and type of the Key Contributions section */
+:root {
+  --green: #0f8a57;
+  --green-dark: #0b6b43;
+  --green-soft: #b9e4cc;
+  --green-tint: #d9f2e5;
+  --green-wash: #f3faf6;
+  --yellow-tint: #fffad6;
+  --pink-tint: #ffd6f7;
+  --blue-dark: #5a63ba;
+  --purple-dark: #a159cb;
+  --ink: #14231b;
+  --text: #374151;
+  --muted: #5b6470;
+  --line: #e5e9ef;
 }
 
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: var(--text);
+}
+
+.title,
+.subtitle {
+  color: var(--ink);
+  font-family: 'Google Sans', sans-serif;
+}
+
+.content p,
+.content li {
+  line-height: 1.7;
+}
+
+.content strong,
+.content b {
+  color: var(--ink);
+}
+
+.content a {
+  color: var(--green-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--green-soft);
+  text-underline-offset: 0.15em;
+}
+
+.content a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Section headings carry a short green bar, echoing the contribution path */
+.section h2.title.is-3::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-top: 0.6rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--green), var(--green-soft));
+}
+
+.section .has-text-centered h2.title::after,
+.section h2.title.has-text-centered::after {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Subsection headings hang off a green rule */
+.section h3.title.is-4 {
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--green);
+}
+
+.navbar-item:hover,
+.navbar-item:focus {
+  background: var(--green-wash) !important;
+  color: var(--green-dark) !important;
+}
+
+.publication-links .button.is-dark {
+  background: var(--ink);
+}
+
+.publication-links .button.is-dark:not([disabled]):hover {
+  background: var(--green-dark);
+}
+
+.hero.is-light {
+  background: var(--green-wash);
+}
+
+#BibTeX pre {
+  border-left: 3px solid var(--green);
+  border-radius: 6px;
+  background: var(--green-wash);
+  color: var(--ink);
+}
+
+.footer {
+  background: var(--green-wash);
+}
 
 .footer .icon-link {
     font-size: 25px;
-    color: #000;
+    color: var(--ink);
 }
 
 .link-block a {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
-.dnerf {
-  font-variant: small-caps;
-}
-
 
 .teaser .hero-body {
   padding-top: 0;
@@ -27,24 +118,208 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-
-.publication-title {
-}
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
+.teaser-grid {
   position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
+  display: grid;
+  grid-template-columns: auto repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
 }
 
-.publication-header .hero-body {
+.teaser-grid .video-label {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+/* Benchmark supertitles, each spanning its three columns */
+.teaser-benchmark {
+  grid-column: span 3;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--green-soft);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Line between the DMC and Robosuite columns. Absolutely positioned in
+   column 5, so it spans the grid's full height without taking a cell. */
+.teaser-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-0.375rem - 2px);
+  grid-column: 5;
+  width: 4px;
+  border-radius: 999px;
+  background: rgba(20, 35, 27, 0.30);
+}
+
+.teaser-row-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--muted);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Backbone label colours; Backbone+VIGOR labels get a green tint */
+.teaser-row-label.is-ours {
+  background-color:  var(--green-tint);
+  font-weight: bold;
+}
+.teaser-row-label.is-dreamerv3 {
+  color: var(--blue-dark);
+}
+.teaser-row-label.is-tdmpc2 {
+  color: var(--purple-dark);
+}
+
+/* A full-width row that shares the parent grid's columns, so it can carry a background */
+.teaser-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  margin: 0 -0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Per-video outcome: a thin coloured frame (padding shows the background).
+   Usage: <video class="is-success|is-moderate|is-failure" ...> */
+.teaser-grid video {
+  display: block;
+  padding: 6px;
+  border-radius: 12px;
+}
+.teaser-grid video.is-success,
+.teaser-swatch.is-success {
+  background: #3aa872;
+}
+.teaser-grid video.is-moderate,
+.teaser-swatch.is-moderate {
+  background: #f3ce61;
+}
+.teaser-grid video.is-failure,
+.teaser-swatch.is-failure {
+  background: #e06a8c;
+}
+
+/* Legend for the outcome frames, under the teaser grid */
+.teaser-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: -0.5rem 0 1.25rem 3rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.teaser-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.teaser-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+/* VIGOR icon above the paper title */
+.publication-icon {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+}
+
+/* Key Contributions: numbered steps joined by a vertical path */
+.contributions-heading {
+  margin-bottom: 2rem !important;
+}
+
+.contributions {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: contribution;
+}
+
+.contributions li {
+  position: relative;
+  padding: 0 0 2rem 4rem;
+  counter-increment: contribution;
+}
+
+.contributions li:last-child {
+  padding-bottom: 0;
+}
+
+/* Numbered node */
+.contributions li::before {
+  content: counter(contribution);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 5px var(--green-tint);
+  color: #fff;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+/* Path joining one node to the next */
+.contributions li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 3rem;
+  bottom: 0.5rem;
+  left: calc(1.25rem - 1px);
+  width: 2px;
+  background: linear-gradient(180deg, var(--green), var(--green-soft));
+}
+
+.contribution-kicker {
+  display: block;
+  color: var(--green-dark);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.contribution-title {
+  margin: 0.2rem 0 0.4rem;
+  color: var(--ink);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.35;
+}
+
+.contributions p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.contributions strong {
+  color: var(--green-dark);
 }
 
 .publication-title {
@@ -56,22 +331,13 @@ body {
 }
 
 .publication-venue {
-    color: #555;
+    color: var(--green-dark);
     width: fit-content;
     font-weight: bold;
 }
 
-.publication-awards {
-    color: #ff3860;
-    width: fit-content;
-    font-weight: bolder;
-}
-
-.publication-authors {
-}
-
 .publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
+   color: var(--green-dark) !important;
 }
 
 .publication-authors a:hover {
@@ -82,34 +348,6 @@ body {
   display: inline-block;
 }
 
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
-.publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-
-    overflow: hidden;
-    border-radius: 10px !important;
-}
-
-.publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.publication-body img {
-}
-
 .results-carousel {
   overflow: hidden;
 }
@@ -117,7 +355,7 @@ body {
 .results-carousel .item {
   margin: 5px;
   overflow: hidden;
-  border: 1px solid #bbb;
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0;
   font-size: 0;
@@ -127,35 +365,50 @@ body {
   margin: 0;
 }
 
-
-.interpolation-panel {
-  background: #f5f5f5;
-  border-radius: 10px;
+/* Gallery video tile: square like the placeholders, with the caption laid over the bottom edge */
+.results-carousel .gallery-item {
+  position: relative;
 }
 
-.interpolation-panel .interpolation-image {
-  width: 100%;
-  border-radius: 5px;
+.results-carousel .gallery-item video {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
 }
 
-.interpolation-video-column {
+.results-carousel .gallery-label {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.5rem 0.75rem 1.0rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+  color: #fff;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  text-align: center;
 }
 
-.interpolation-panel .slider {
-  margin: 0 !important;
+/* Legend for the outcome frames, under the rollout grid */
+.rollout-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: -0.5rem 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
-
-.interpolation-panel .slider {
-  margin: 0 !important;
+.rollout-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
-
-#interpolation-image-wrapper {
-  width: 100%;
+.rollout-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
 }
-#interpolation-image-wrapper img {
-  border-radius: 5px;
-}
-
 
 html {
   scroll-behavior: smooth;
@@ -177,10 +430,6 @@ html {
   margin-right: auto;
 }
 
-.figure-narrow {
-  max-width: 640px;
-}
-
 .content .figure-block figcaption {
   font-style: normal;
 }
@@ -189,7 +438,7 @@ html {
 .figure-caption {
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
-  color: #555;
+  color: var(--muted);
   font-size: 0.9rem;
   text-align: center;
 }
@@ -199,34 +448,27 @@ html {
   font-family: 'Google Sans', sans-serif;
   font-size: 0.95rem;
   text-align: center;
+  white-space: nowrap;
+}
+
+.rollout-swatch.is-failure,
+.video-label.is-failure {
+  background-color: var(--pink-tint);
+}
+
+.rollout-swatch.is-moderate,
+.video-label.is-moderate {
+  background-color: var(--yellow-tint);
+}
+
+.rollout-swatch.is-success,
+.video-label.is-success {
+  background-color: var(--green-tint);
 }
 
 video {
   display: block;
   border-radius: 5px;
-}
-
-.placeholder-media {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1 / 1;
-  padding: 0.75rem;
-  border: 2px dashed #b5b5b5;
-  border-radius: 5px;
-  background: #f5f5f5;
-  color: #666;
-  font-size: 0.85rem;
-  line-height: 1.3;
-  text-align: center;
-}
-
-.placeholder-id {
-  margin-bottom: 0.25rem;
-  color: #363636;
-  font-size: 1.25rem;
-  font-weight: bold;
 }
 
 .vigor-table td,
@@ -236,13 +478,7 @@ video {
 }
 
 .vigor-table small {
-  color: #777;
-  font-size: 0.75rem;
-  white-space: nowrap;
-}
-
-.vigor-table-wide td,
-.vigor-table-wide th {
+  color: var(--muted);
   font-size: 0.75rem;
   white-space: nowrap;
 }
@@ -253,42 +489,12 @@ video {
   text-align: center !important;
 }
 
-.vigor-table tr.is-ours td,
-.vigor-table td.is-ours,
-.vigor-table th.is-ours {
-  background: #e3f4fb;
+.vigor-table tr.is-ours td {
+  background: var(--green-tint);
 }
 
-.vigor-table .table-group td {
-  background: #f5f5f5;
-  font-weight: bold;
+.vigor-table thead th {
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
 }
 
-.vigor-table .table-average td {
-  border-top: 2px solid #b5b5b5;
-}
-
-.supp-group {
-  margin-top: 2rem;
-  margin-bottom: 0.75rem !important;
-}
-
-.supp-item {
-  margin-bottom: 0.5rem;
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-}
-
-.supp-item summary {
-  padding: 0.6rem 1rem;
-  font-family: 'Google Sans', sans-serif;
-  cursor: pointer;
-}
-
-.supp-item[open] summary {
-  border-bottom: 1px solid #dbdbdb;
-}
-
-.supp-item .content {
-  padding: 1rem;
-}
